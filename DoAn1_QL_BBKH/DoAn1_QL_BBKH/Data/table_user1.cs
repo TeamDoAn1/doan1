@@ -31,7 +31,7 @@ namespace DoAn1_QL_BBKH.Data
         }
         public DataSet LayTk()
         {
-            return db.ExecuteQueryDataSet("select * from User1");
+            return db.ExecuteQueryDataSet("select username as TaiKhoan, permission as QuyenTruyCap from User1");
         }
 
         public bool ThemTK(string tk, int quyen)

@@ -15,6 +15,8 @@ namespace DoAn1_QL_BBKH
     {
         table_user1 data = new table_user1();
         bool Them = false;
+        int tk = 0;
+        DataTable dtTK = new DataTable();
         public frmPhanQuyen()
         {
             InitializeComponent();
@@ -148,6 +150,32 @@ namespace DoAn1_QL_BBKH
                 txtMaNV.Text = dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
                 txtQuyen.Text = dgv.Rows[e.RowIndex].Cells[1].Value.ToString();
             }
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            if (tk == 0)
+            {
+                dtTK.Columns.Add("Tài Khoản", typeof(string));
+                dtTK.Columns.Add("Quyền Truy Cập", typeof(string));
+            }
+
+            for (int i = 0; i < dgv.Rows.Count - 1; i++)
+            {
+                if (String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[0].Value.ToString(), true) == 0
+                 || dgv.Rows[i].Cells[1].Value.ToString().Contains(txtTimKiem.Text) != false)
+                {
+
+                    //MessageBox.Show(Convert.ToString(dtTK.Rows.Count));
+                    DataRow row;
+                    row = dtTK.NewRow();
+                    row["Tài Khoản"] = dgv.Rows[i].Cells[0].Value.ToString();
+                    row["Quyền Truy Cập"] = dgv.Rows[i].Cells[1].Value.ToString();
+                    dtTK.Rows.Add(row);
+                };
+            }
+            tk++;
+            dgv.DataSource = dtTK;
         }
     }
 }

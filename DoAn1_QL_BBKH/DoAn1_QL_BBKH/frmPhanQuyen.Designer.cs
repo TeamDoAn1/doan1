@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnTimKiem = new System.Windows.Forms.Button();
-            this.TimKiem = new System.Windows.Forms.TextBox();
+            this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTroVe = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.btnLuu = new System.Windows.Forms.Button();
@@ -55,14 +55,15 @@
             this.btnTimKiem.Size = new System.Drawing.Size(55, 56);
             this.btnTimKiem.TabIndex = 120;
             this.btnTimKiem.UseVisualStyleBackColor = false;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
-            // TimKiem
+            // txtTimKiem
             // 
-            this.TimKiem.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimKiem.Location = new System.Drawing.Point(21, 192);
-            this.TimKiem.Name = "TimKiem";
-            this.TimKiem.Size = new System.Drawing.Size(822, 33);
-            this.TimKiem.TabIndex = 119;
+            this.txtTimKiem.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimKiem.Location = new System.Drawing.Point(21, 192);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(822, 33);
+            this.txtTimKiem.TabIndex = 119;
             // 
             // btnTroVe
             // 
@@ -200,7 +201,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(919, 554);
             this.Controls.Add(this.btnTimKiem);
-            this.Controls.Add(this.TimKiem);
+            this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.btnTroVe);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.btnLuu);
@@ -222,7 +223,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnTimKiem;
-        private System.Windows.Forms.TextBox TimKiem;
+        private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Button btnTroVe;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.Button btnLuu;

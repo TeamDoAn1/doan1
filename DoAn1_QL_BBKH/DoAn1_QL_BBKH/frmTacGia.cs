@@ -13,6 +13,8 @@ namespace DoAn1_QL_BBKH
 {
     public partial class frmTacGia : Form
     {
+        int tk = 0;
+        DataTable dtTK = new DataTable();
         table_TacGia data = new table_TacGia();
         public frmTacGia()
         {
@@ -75,17 +77,46 @@ namespace DoAn1_QL_BBKH
             tbMaTG.Text = "";tbTenTG.Text = "";tbDiaChi.Text = "";tbSDT.Text = "";
             txtTimKiem.Focus();
             txtTimKiem.Clear();
+            dtTK.Clear();
             //dtTK.Clear();
             DisplayDataTacGia();
         }
 
         private void BtnTimKiem_Click(object sender, EventArgs e)
         {
-            DataSet ds = data.FindTG(txtTimKiem.Text);
-            DataTable dt = new DataTable();
-            dt = ds.Tables[0];
-            dgv.DataSource = dt;
-            
+            //DataSet ds = data.FindTG(txtTimKiem.Text);
+            //DataTable dt = new DataTable();
+            //dt = ds.Tables[0];
+            //dgv.DataSource = dt;
+            if (tk == 0)
+            {
+                dtTK.Columns.Add("ID", typeof(string));
+                dtTK.Columns.Add("TenTacGia", typeof(string));
+                dtTK.Columns.Add("DiaChi", typeof(string));
+                dtTK.Columns.Add("SDT", typeof(string));
+            }
+
+            for (int i = 0; i < dgv.Rows.Count - 1; i++)
+            {
+                if (String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[0].Value.ToString(), true) == 0
+                 || dgv.Rows[i].Cells[1].Value.ToString().Contains(txtTimKiem.Text) != false
+                 || dgv.Rows[i].Cells[2].Value.ToString().Contains(txtTimKiem.Text) != false
+                 || dgv.Rows[i].Cells[3].Value.ToString().Contains(txtTimKiem.Text) != false)
+                {
+
+                    //MessageBox.Show(Convert.ToString(dtTK.Rows.Count));
+                    DataRow row;
+                    row = dtTK.NewRow();
+                    row["ID"] = dgv.Rows[i].Cells[0].Value.ToString();
+                    row["TenTacGia"] = dgv.Rows[i].Cells[1].Value.ToString();
+                    row["DiaChi"] = dgv.Rows[i].Cells[2].Value.ToString();
+                    row["SDT"] = dgv.Rows[i].Cells[3].Value.ToString();
+                    dtTK.Rows.Add(row);
+                };
+            }
+            tk++;
+            dgv.DataSource = dtTK;
+
         }
 
         private void Dgv_CellClick(object sender, DataGridViewCellEventArgs e)

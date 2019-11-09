@@ -183,6 +183,16 @@ namespace DoAn1_QL_BBKH.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap excel {
+            get {
+                object obj = ResourceManager.GetObject("excel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hinh_nen_slide_dep_63_023219752 {
             get {
                 object obj = ResourceManager.GetObject("hinh-nen-slide-dep-63_023219752", resourceCulture);

@@ -105,7 +105,7 @@ namespace DoAn1_QL_BBKH
 
         private void BtnThongTin_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Phần mềm Quản lí các bài báo Khoa học này là đề tài môn Đồ án 1. \nThực hiện bởi sinh viên: \n    - Diệp Gia Hữu \n    - Hồ Sĩ Tuấn \n    - Trương Minh Khoa", "About");
         }
         //auto close message box
         public class AutoClosingMessageBox

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DoAn1_QL_BBKH.Data;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace DoAn1_QL_BBKH
 {   
@@ -15,18 +16,27 @@ namespace DoAn1_QL_BBKH
     {
         int tk = 0;
         DataTable dtTK = new DataTable();
+        DataTable dt = new DataTable();
         table_BaiBao data = new table_BaiBao();
         public frmBaiBao()
         {
             InitializeComponent();
+            toolTip1.SetToolTip(btnTimKiem, "Tìm kiếm");
+            toolTip1.SetToolTip(xuatExcel, "Xuất ra file Excel");
+            toolTip1.SetToolTip(btXoa, "Xóa");
+            toolTip1.SetToolTip(btClear, "Hủy");
+            toolTip1.SetToolTip(btSua, "Sửa");
+            toolTip1.SetToolTip(btnThem, "Thêm");
+            toolTip1.SetToolTip(btnTroVe, "Trở về");
             DisplayDataBaiBao();
+
         }
         public void DisplayDataBaiBao()
         {
             try
             { 
                 DataSet ds = data.LayBaiBao();
-                DataTable dt = new DataTable();
+               
                 dt = ds.Tables[0];
                 dgv.DataSource = dt;
             }
@@ -132,54 +142,61 @@ namespace DoAn1_QL_BBKH
             //    dt = ds.Tables[0];
             //    dgv.DataSource = dt;
             //}
-            if (tk == 0)
+            try
             {
-                dtTK.Columns.Add("ID", typeof(string));
-                dtTK.Columns.Add("TenBaiBao", typeof(string));
-                dtTK.Columns.Add("TenTacGia", typeof(string));
-                dtTK.Columns.Add("TenNXB", typeof(string));
-                dtTK.Columns.Add("NoiDang", typeof(string));
-                dtTK.Columns.Add("NgayDang", typeof(string));
-                dtTK.Columns.Add("SoTrang", typeof(string));
-                dtTK.Columns.Add("SoLuoc", typeof(string));
-                dtTK.Columns.Add("TrichDan", typeof(string));
-            }
-
-            for (int i = 0; i < dgv.Rows.Count - 1; i++)
-            {
-                if (String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[0].Value.ToString(), true) == 0
-                 || dgv.Rows[i].Cells[1].Value.ToString().Contains(txtTimKiem.Text) != false
-                 || dgv.Rows[i].Cells[2].Value.ToString().Contains(txtTimKiem.Text) != false
-                 || dgv.Rows[i].Cells[3].Value.ToString().Contains(txtTimKiem.Text) != false
-                 || dgv.Rows[i].Cells[4].Value.ToString().Contains(txtTimKiem.Text) != false
-                 || String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[5].Value.ToString(), true) == 0
-                 || String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[6].Value.ToString(), true) == 0
-                 || dgv.Rows[i].Cells[7].Value.ToString().Contains(txtTimKiem.Text) != false
-                 || dgv.Rows[i].Cells[8].Value.ToString().Contains(txtTimKiem.Text) != false)
+                if (tk == 0)
                 {
+                    dtTK.Columns.Add("ID", typeof(string));
+                    dtTK.Columns.Add("TenBaiBao", typeof(string));
+                    dtTK.Columns.Add("TenTacGia", typeof(string));
+                    dtTK.Columns.Add("TenNXB", typeof(string));
+                    dtTK.Columns.Add("NoiDang", typeof(string));
+                    dtTK.Columns.Add("NgayDang", typeof(string));
+                    dtTK.Columns.Add("SoTrang", typeof(string));
+                    dtTK.Columns.Add("SoLuoc", typeof(string));
+                    dtTK.Columns.Add("TrichDan", typeof(string));
+                }
 
-                    //MessageBox.Show(Convert.ToString(dtTK.Rows.Count));
-                    DataRow row;
-                    row = dtTK.NewRow();
-                    row["ID"] = dgv.Rows[i].Cells[0].Value.ToString();
-                    row["TenBaiBao"] = dgv.Rows[i].Cells[1].Value.ToString();
-                    row["TenTacGia"] = dgv.Rows[i].Cells[2].Value.ToString();
-                    row["TenNXB"] = dgv.Rows[i].Cells[3].Value.ToString();
-                    row["NoiDang"] = dgv.Rows[i].Cells[4].Value.ToString();
-                    row["NgayDang"] = dgv.Rows[i].Cells[5].Value.ToString();
-                    row["SoTrang"] = dgv.Rows[i].Cells[6].Value.ToString();
-                    row["SoLuoc"] = dgv.Rows[i].Cells[7].Value.ToString();
-                    row["TrichDan"] = dgv.Rows[i].Cells[8].Value.ToString();
-                    dtTK.Rows.Add(row);
-                };
+                for (int i = 0; i < dgv.Rows.Count - 1; i++)
+                {
+                    if (String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[0].Value.ToString(), true) == 0
+                     || dgv.Rows[i].Cells[1].Value.ToString().Contains(txtTimKiem.Text) != false
+                     || dgv.Rows[i].Cells[2].Value.ToString().Contains(txtTimKiem.Text) != false
+                     || dgv.Rows[i].Cells[3].Value.ToString().Contains(txtTimKiem.Text) != false
+                     || dgv.Rows[i].Cells[4].Value.ToString().Contains(txtTimKiem.Text) != false
+                     || String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[5].Value.ToString(), true) == 0
+                     || String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[6].Value.ToString(), true) == 0
+                     || dgv.Rows[i].Cells[7].Value.ToString().Contains(txtTimKiem.Text) != false
+                     || dgv.Rows[i].Cells[8].Value.ToString().Contains(txtTimKiem.Text) != false)
+                    {
+
+                        //MessageBox.Show(Convert.ToString(dtTK.Rows.Count));
+                        DataRow row;
+                        row = dtTK.NewRow();
+                        row["ID"] = dgv.Rows[i].Cells[0].Value.ToString();
+                        row["TenBaiBao"] = dgv.Rows[i].Cells[1].Value.ToString();
+                        row["TenTacGia"] = dgv.Rows[i].Cells[2].Value.ToString();
+                        row["TenNXB"] = dgv.Rows[i].Cells[3].Value.ToString();
+                        row["NoiDang"] = dgv.Rows[i].Cells[4].Value.ToString();
+                        row["NgayDang"] = dgv.Rows[i].Cells[5].Value.ToString();
+                        row["SoTrang"] = dgv.Rows[i].Cells[6].Value.ToString();
+                        row["SoLuoc"] = dgv.Rows[i].Cells[7].Value.ToString();
+                        row["TrichDan"] = dgv.Rows[i].Cells[8].Value.ToString();
+                        dtTK.Rows.Add(row);
+                    };
+                }
+                tk++;
+
+                dgv.DataSource = dtTK;
+            } catch (SqlException)
+            {
+                MessageBox.Show("Tìm kiếm được. Lỗi rồi! /n Ấn nút Hủy và thử tìm kiếm lại." );
             }
-            tk++;
-            dgv.DataSource = dtTK;
 
         }
 
 
-        private void Dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+            private void Dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex  >= 0)
             {
@@ -257,6 +274,184 @@ namespace DoAn1_QL_BBKH
             }
         }
 
+        private void xuatExcel_Click(object sender, EventArgs e)
+        {
+            if (tk > 0)
+            {
+                Export(dtTK, "BaiBaoKhoaHoc", "Danh sách Bài báo:");
+            }
+            else
+                Export(dt, "BaiBaoKhoaHoc", "Danh sách Bài báo:");
+        }
+        public void Export(DataTable dt, string sheetName, string title)
+        {
+            //Tạo các đối tượng Excel
+
+            Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+
+            Microsoft.Office.Interop.Excel.Workbooks oBooks;
+
+            Microsoft.Office.Interop.Excel.Sheets oSheets;
+
+            Microsoft.Office.Interop.Excel.Workbook oBook;
+
+            Microsoft.Office.Interop.Excel.Worksheet oSheet;
+
+            //Tạo mới một Excel WorkBook 
+
+            oExcel.Visible = true;
+
+            oExcel.DisplayAlerts = false;
+
+            oExcel.Application.SheetsInNewWorkbook = 1;
+
+            oBooks = oExcel.Workbooks;
+
+            oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+
+            oSheets = oBook.Worksheets;
+
+            oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+
+            oSheet.Name = sheetName;
+
+            // Tạo phần đầu nếu muốn
+
+            Microsoft.Office.Interop.Excel.Range head = oSheet.get_Range("A1", "C1");
+
+            head.MergeCells = true;
+
+            head.Value2 = title;
+
+            head.Font.Bold = true;
+
+            head.Font.Name = "Tahoma";
+
+            head.Font.Size = "18";
+
+            head.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            // Tạo tiêu đề cột 
+
+            Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A3", "A3");
+
+            cl1.Value2 = "Mã bài báo";
+
+            cl1.ColumnWidth = 13.5;
+
+            Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B3", "B3");
+
+            cl2.Value2 = "Tên bài báo";
+
+            cl2.ColumnWidth = 25.0;
+
+            Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C3", "C3");
+
+            cl3.Value2 = "Tên tác giả";
+
+            cl3.ColumnWidth = 40.0;
+
+            Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A3", "I3");
+
+            rowHead.Font.Bold = true;
+
+            Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D3", "D3");
+            cl4.Value2 = "Tên NXB";
+            cl4.ColumnWidth = 25.0;
+
+            Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("E3", "E3");
+            cl5.Value2 = "Nơi đăng";
+            cl5.ColumnWidth = 20.0;
+
+            Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("F3", "F3");
+            cl6.Value2 = "Ngày đăng";
+            cl6.ColumnWidth = 20.0;
+
+            Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("G3", "G3");
+            cl7.Value2 = "Số trang";
+            cl7.ColumnWidth = 20.0;
+
+            Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("H3", "H3");
+            cl8.Value2 = "Sơ lược";
+            cl8.ColumnWidth = 250.0;
+
+            Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("I3", "I3");
+            cl9.Value2 = "Trích dẫn";
+            cl9.ColumnWidth = 30.0;
+
+            // Kẻ viền
+
+            rowHead.Borders.LineStyle = Microsoft.Office.Interop.Excel.Constants.xlSolid;
+
+            // Thiết lập màu nền
+
+            rowHead.Interior.ColorIndex = 15;
+
+            rowHead.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
+
+            // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+
+            object[,] arr = new object[dt.Rows.Count, dt.Columns.Count];
+
+            //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+
+            for (int r = 0; r < dt.Rows.Count; r++)
+
+            {
+
+                DataRow dr = dt.Rows[r];
+
+                for (int c = 0; c < dt.Columns.Count; c++)
+
+                {
+                    arr[r, c] = dr[c];
+                }
+            }
+
+            //Thiết lập vùng điền dữ liệu
+
+            int rowStart = 4;
+
+            int columnStart = 1;
+
+            int rowEnd = rowStart + dt.Rows.Count - 1;
+
+            int columnEnd = dt.Columns.Count;
+
+            // Ô bắt đầu điền dữ liệu
+
+            Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+
+            // Ô kết thúc điền dữ liệu
+
+            Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+
+            // Lấy về vùng điền dữ liệu
+
+            Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+
+            //Điền dữ liệu vào vùng đã thiết lập
+
+            range.Value2 = arr;
+
+            // Kẻ viền
+
+            range.Borders.LineStyle = Microsoft.Office.Interop.Excel.Constants.xlSolid;
+
+            // Căn giữa cột STT
+
+            //Microsoft.Office.Interop.Excel.Range c3 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnStart];
+
+            //Microsoft.Office.Interop.Excel.Range c4 = oSheet.get_Range(c1, c3);
+
+            //oSheet.get_Range(c3, c4).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range c5 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnStart];
+            Microsoft.Office.Interop.Excel.Range c6 = oSheet.get_Range(c1, c5);
+            oSheet.get_Range(c5, c6).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+        }
 
     }
 }

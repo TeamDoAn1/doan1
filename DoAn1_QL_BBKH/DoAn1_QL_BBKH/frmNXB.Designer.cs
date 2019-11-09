@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTroVe = new System.Windows.Forms.Button();
@@ -43,6 +44,8 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
+            this.xuatExcel = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -52,9 +55,9 @@
             this.btnTimKiem.BackColor = System.Drawing.Color.Green;
             this.btnTimKiem.BackgroundImage = global::DoAn1_QL_BBKH.Properties.Resources.search;
             this.btnTimKiem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnTimKiem.Location = new System.Drawing.Point(840, 253);
+            this.btnTimKiem.Location = new System.Drawing.Point(754, 238);
             this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(55, 56);
+            this.btnTimKiem.Size = new System.Drawing.Size(72, 45);
             this.btnTimKiem.TabIndex = 131;
             this.btnTimKiem.UseVisualStyleBackColor = false;
             this.btnTimKiem.Click += new System.EventHandler(this.BtnTimKiem_Click);
@@ -62,9 +65,9 @@
             // txtTimKiem
             // 
             this.txtTimKiem.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiem.Location = new System.Drawing.Point(12, 261);
+            this.txtTimKiem.Location = new System.Drawing.Point(12, 241);
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(822, 33);
+            this.txtTimKiem.Size = new System.Drawing.Size(736, 33);
             this.txtTimKiem.TabIndex = 130;
             // 
             // btnTroVe
@@ -86,11 +89,11 @@
             this.dgv.BackgroundColor = System.Drawing.Color.SeaGreen;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.GridColor = System.Drawing.Color.SeaGreen;
-            this.dgv.Location = new System.Drawing.Point(12, 314);
+            this.dgv.Location = new System.Drawing.Point(12, 289);
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowHeadersWidth = 62;
-            this.dgv.Size = new System.Drawing.Size(883, 296);
+            this.dgv.Size = new System.Drawing.Size(883, 321);
             this.dgv.TabIndex = 122;
             this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_CellClick);
             // 
@@ -216,6 +219,18 @@
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.BtnSua_Click);
             // 
+            // xuatExcel
+            // 
+            this.xuatExcel.BackColor = System.Drawing.Color.White;
+            this.xuatExcel.BackgroundImage = global::DoAn1_QL_BBKH.Properties.Resources.excel;
+            this.xuatExcel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.xuatExcel.Location = new System.Drawing.Point(832, 238);
+            this.xuatExcel.Name = "xuatExcel";
+            this.xuatExcel.Size = new System.Drawing.Size(63, 45);
+            this.xuatExcel.TabIndex = 132;
+            this.xuatExcel.UseVisualStyleBackColor = false;
+            this.xuatExcel.Click += new System.EventHandler(this.xuatExcel_Click);
+            // 
             // frmNXB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,6 +238,7 @@
             this.BackgroundImage = global::DoAn1_QL_BBKH.Properties.Resources.hinh_nen_slide_dep_63_023219752;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(915, 626);
+            this.Controls.Add(this.xuatExcel);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.btnTroVe);
@@ -260,5 +276,7 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Button xuatExcel;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

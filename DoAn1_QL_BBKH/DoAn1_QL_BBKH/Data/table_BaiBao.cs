@@ -40,16 +40,16 @@ namespace DoAn1_QL_BBKH.Data
             string sqlString = "Delete from Bai_Bao_KH where ID=" + ID;
             return db.MyExecuteNonQuery(sqlString);
         }
-        public DataSet Find(string select, string word)
-        {
-            string sqlString = "select * from Bai_Bao_KH where "+select+"='" + word + "';";
-            return db.ExecuteQueryDataSet(sqlString);
-        }
-        public string[] Auto(string select)
-        {
-            string[] a = new string[400];
-            string sqlString = "select " + select + " from Bai_Bao_KH";
-            return db.FindExecute(sqlString);
-        }
+        //public DataSet Find(string select, string word)
+        //{
+        //    string sqlString = "select * from Bai_Bao_KH where "+select+"='" + word + "';";
+        //    return db.ExecuteQueryDataSet(sqlString);
+        //}
+        //public string[] Auto(string select)
+        //{
+        //    string[] a = new string[400];
+        //    string sqlString = "select " + select + " from Bai_Bao_KH";
+        //    return db.FindExecute(sqlString);
+        //}
     }
 }

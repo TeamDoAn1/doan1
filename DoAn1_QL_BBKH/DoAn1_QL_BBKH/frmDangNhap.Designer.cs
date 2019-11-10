@@ -45,47 +45,41 @@
             this.panel1.Controls.Add(this.btnXacNhan);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(42, 48);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Location = new System.Drawing.Point(28, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(681, 315);
+            this.panel1.Size = new System.Drawing.Size(454, 205);
             this.panel1.TabIndex = 1;
             // 
             // txtPass
             // 
             this.txtPass.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPass.Location = new System.Drawing.Point(280, 117);
-            this.txtPass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPass.Location = new System.Drawing.Point(187, 76);
             this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(342, 46);
+            this.txtPass.Size = new System.Drawing.Size(229, 33);
             this.txtPass.TabIndex = 9;
             this.txtPass.Text = "admin";
             this.txtPass.UseSystemPasswordChar = true;
             this.txtPass.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxtPass_MouseClick);
-            
             this.txtPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtPass_KeyDown);
             // 
             // txtMaNV
             // 
             this.txtMaNV.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaNV.Location = new System.Drawing.Point(280, 35);
-            this.txtMaNV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtMaNV.Location = new System.Drawing.Point(187, 23);
             this.txtMaNV.Name = "txtMaNV";
-            this.txtMaNV.Size = new System.Drawing.Size(342, 46);
+            this.txtMaNV.Size = new System.Drawing.Size(229, 33);
             this.txtMaNV.TabIndex = 8;
             this.txtMaNV.Text = "admin";
             this.txtMaNV.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxtMaNV_MouseClick);
-            
             // 
             // btnXacNhan
             // 
             this.btnXacNhan.BackColor = System.Drawing.Color.SeaGreen;
             this.btnXacNhan.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXacNhan.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnXacNhan.Location = new System.Drawing.Point(216, 214);
-            this.btnXacNhan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnXacNhan.Location = new System.Drawing.Point(144, 139);
             this.btnXacNhan.Name = "btnXacNhan";
-            this.btnXacNhan.Size = new System.Drawing.Size(240, 62);
+            this.btnXacNhan.Size = new System.Drawing.Size(160, 40);
             this.btnXacNhan.TabIndex = 7;
             this.btnXacNhan.Text = "Đăng nhập";
             this.btnXacNhan.UseVisualStyleBackColor = false;
@@ -97,10 +91,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(30, 129);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(20, 84);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(160, 39);
+            this.label2.Size = new System.Drawing.Size(105, 25);
             this.label2.TabIndex = 6;
             this.label2.Text = "Mật khẩu:";
             // 
@@ -110,22 +103,20 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(30, 48);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(20, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(225, 39);
+            this.label1.Size = new System.Drawing.Size(110, 25);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Mã Nhân Viên:";
+            this.label1.Text = "Tài khoản:";
             // 
             // frmDangNhap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::DoAn1_QL_BBKH.Properties.Resources.hinh_nen_slide_dep_63_023219752;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(768, 402);
+            this.ClientSize = new System.Drawing.Size(512, 261);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập";

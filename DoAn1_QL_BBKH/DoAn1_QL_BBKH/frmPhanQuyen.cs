@@ -159,11 +159,15 @@ namespace DoAn1_QL_BBKH
                 dtTK.Columns.Add("Tài Khoản", typeof(string));
                 dtTK.Columns.Add("Quyền Truy Cập", typeof(string));
             }
-
+            else
+            {
+                dtTK.Clear();
+                DisplayDataPhanQuyen();
+            }
             for (int i = 0; i < dgv.Rows.Count - 1; i++)
             {
                 if (String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[0].Value.ToString(), true) == 0
-                 || dgv.Rows[i].Cells[1].Value.ToString().Contains(txtTimKiem.Text) != false)
+                 || String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[1].Value.ToString(), true) == 0)
                 {
 
                     //MessageBox.Show(Convert.ToString(dtTK.Rows.Count));

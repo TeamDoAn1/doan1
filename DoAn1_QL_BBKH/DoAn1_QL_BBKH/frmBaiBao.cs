@@ -156,21 +156,25 @@ namespace DoAn1_QL_BBKH
                     dtTK.Columns.Add("SoLuoc", typeof(string));
                     dtTK.Columns.Add("TrichDan", typeof(string));
                 }
-
+                else
+                {
+                    dtTK.Clear();
+                    DisplayDataBaiBao();
+                }
                 for (int i = 0; i < dgv.Rows.Count - 1; i++)
                 {
                     if (String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[0].Value.ToString(), true) == 0
-                     || dgv.Rows[i].Cells[1].Value.ToString().Contains(txtTimKiem.Text) != false
-                     || dgv.Rows[i].Cells[2].Value.ToString().Contains(txtTimKiem.Text) != false
-                     || dgv.Rows[i].Cells[3].Value.ToString().Contains(txtTimKiem.Text) != false
-                     || dgv.Rows[i].Cells[4].Value.ToString().Contains(txtTimKiem.Text) != false
+                     || String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[1].Value.ToString(), true) == 0
+                     || String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[2].Value.ToString(), true) == 0
+                     || String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[3].Value.ToString(), true) == 0
+                     || String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[4].Value.ToString(), true) == 0
                      || String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[5].Value.ToString(), true) == 0
                      || String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[6].Value.ToString(), true) == 0
-                     || dgv.Rows[i].Cells[7].Value.ToString().Contains(txtTimKiem.Text) != false
-                     || dgv.Rows[i].Cells[8].Value.ToString().Contains(txtTimKiem.Text) != false)
+                     || String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[7].Value.ToString(), true) == 0
+                     || String.Compare(txtTimKiem.Text, dgv.Rows[i].Cells[8].Value.ToString(), true) == 0)
+                    
                     {
 
-                        //MessageBox.Show(Convert.ToString(dtTK.Rows.Count));
                         DataRow row;
                         row = dtTK.NewRow();
                         row["ID"] = dgv.Rows[i].Cells[0].Value.ToString();
